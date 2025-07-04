@@ -49,7 +49,7 @@ async def get_task(task_id: str):
 
 @app.get("/list-tasks/{user_id}")
 async def list_tasks(user_id: str):
-    table = _get_table
+    table = _get_table()
     response = table.query(
         IndexName="user-index",
         KeyConditionExpression=Key("user_id").eq(user_id),
@@ -61,7 +61,7 @@ async def list_tasks(user_id: str):
 
 @app.put("/update-task")
 async def update_task(put_task_request: PutTaskRequest):
-    table = _get_table
+    table = _get_table()
     table.update_item(
         Key={"key_id": put_task_request.task_id},
         UpdateExpression="SET content = :content, is_done = :is_done",
@@ -75,7 +75,7 @@ async def update_task(put_task_request: PutTaskRequest):
 
 @app.delete("/delete-task/{task_id}")
 async def delete_task(task_id: str):
-    table = _get_table
+    table = _get_table()
     table.delete_item(Key={"task_id": task_id})
     return {"deleted_task_id": task_id}
 
