@@ -63,7 +63,7 @@ async def list_tasks(user_id: str):
 async def update_task(put_task_request: PutTaskRequest):
     table = _get_table()
     table.update_item(
-        Key={"key_id": put_task_request.task_id},
+        Key={"task_id": put_task_request.task_id},
         UpdateExpression="SET content = :content, is_done = :is_done",
         ExpressionAttributeValues={
             ":content": put_task_request.content,
