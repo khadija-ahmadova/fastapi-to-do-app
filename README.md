@@ -1,29 +1,65 @@
-# FastAPI To-Do App
+# FastAPI To-Do App with AWS Lambda & DynamoDB
 
-CRUD To-Do App on AWS using FastAPI and Python
+## Table of Contents
+1. [Overview](#overview)
+2. [Features](#features)
+3. [SetUp](#setup)
+4. [Project Structure](#project-structure)
 
-- function deployed on AWS Lambda
-- data saved on a serverless database DynamoDB
+## Overview
 
-### Databse Schema
+This project is backend of a to-do list app written in Python and FastAPI.
+The app provides a RESTful API for basic CRUD operations.
 
-| task_id | user_id | created_time | content | is_done |
-| ------- | ------- | ------------ | ------- | ------- |
-| xxxx    | xxxxxxx | xx-xx-xx     | "xxxx"  | false   |
+It is hosted on serverless AWS infrastructure.
+Function is deployed on AWS Lambda and data is saved on serverless DynamoDB database.
 
 
-## To Do
+## Features
+- Create, Read, Update, and Delete to-do items
+- Serverless architecture
+- FastAPI for high-performance APIs
+- DynamoDB for cost-effective, scalable storage
 
-1. Build cloud infrastructure using AWS CDK
-2. Write Pyton FastAPI application and deploy
-3. Write tests using pytest
-4. Frontend ??
 
-## Functionality
+## Setup
 
-users can
-   - create task
-   - get task
-   - lists tasks
-   - update task
-   - delete task 
+#### Prerequsites
+- Git
+- Python
+- [AWS CLI](https://aws.amazon.com/cli/) configured
+- [AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/home.html) installed
+
+#### Steps
+Clone the repo
+```
+git clone https://github.com/khadija-ahmadova/fastapi-to-do-app.git
+cd fastapi-to-do-app
+```
+
+Set up a virtual environment
+```
+python -m venv venv
+source venv/bin/activate
+```
+Install dependencies
+```
+pip install -r requirements.txt
+```
+If you have never used CDK with your account before run
+```
+cdk bootstrap
+```
+Go to `todo-infra` folder and run
+```
+cdk deploy
+```
+To interact with the API using auto-generated FastAPI documentation, do to `{APIUrl}/docs`
+
+## Project Structure
+
+The `/api` folder contains Python and FastAPI code.
+
+The `/todo-infra` contains the CDK code to deploy Lambda function and DynamoDB table to AWS account.
+
+The `/test` folder contains PyTest integration tests to test endpoints
