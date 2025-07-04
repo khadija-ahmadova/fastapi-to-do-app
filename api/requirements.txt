@@ -2,3 +2,5 @@ fastapi
 uvicorn
 mangum
 boto3
+requests
+pytests
